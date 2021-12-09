@@ -1,0 +1,302 @@
+﻿<Window x:Class="BlockuMoveEvaluator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BlockuMoveEvaluator"
+        mc:Ignorable="d"
+        Title="MoveViz" Height="450" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="8">
+            <Button Click="LoadPreviousFileButton_Click" x:Name="PreviousFile_Button" Margin="8" Padding="8" Width="96" IsEnabled="False">Previous Move</Button>
+            <Button Click="LoadFileButton_Click" Margin="8" Padding="8" Width="96">Load File</Button>
+            <Button Click="LoadNextFileButton_Click" x:Name="NextFile_Button" Margin="8" Padding="8" Width="96" IsEnabled="False">Next Move</Button>
+            <Border Height="5" BorderThickness="3" BorderBrush="Black" CornerRadius="10" Margin="0 20 0 0"/>
+            <Label>Suggestion:</Label>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="PreviousSuggestion_Click" Margin="8 8 0 8" Width="18">←</Button>
+                <TextBlock Margin="0 8" Padding="8" Width="50" x:Name="DisplayedSuggestionIndex" TextAlignment="Center">-</TextBlock>
+                <Button Click="NextSuggestion_Click" Margin="8 8 0 8" Width="18" Content="→"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <Grid Grid.Column="2" Grid.Row="1" x:Name="DisplayGrid">
+            <Grid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Width" Value="30"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="CornerRadius" Value="2"/>
+                    <Setter Property="Margin" Value="1"/>
+                </Style>
+            </Grid.Resources>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Border Grid.Column="0" Grid.Row="0" Tag="0" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="1" Tag="1" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="2" Tag="2" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="3" Tag="3" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="4" Tag="4" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="5" Tag="5" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="6" Tag="6" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="7" Tag="7" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="0" Grid.Row="8" Tag="8" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="1" Grid.Row="0" Tag="9" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="1" Tag="10" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="2" Tag="11" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="3" Tag="12" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="4" Tag="13" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="5" Tag="14" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="6" Tag="15" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="7" Tag="16" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="1" Grid.Row="8" Tag="17" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="2" Grid.Row="0" Tag="18" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="1" Tag="19" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="2" Tag="20" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="3" Tag="21" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="4" Tag="22" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="5" Tag="23" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="6" Tag="24" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="7" Tag="25" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="2" Grid.Row="8" Tag="26" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="3" Grid.Row="0" Tag="27" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="1" Tag="28" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="2" Tag="29" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="3" Tag="30" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="4" Tag="31" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="5" Tag="32" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="6" Tag="33" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="7" Tag="34" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="3" Grid.Row="8" Tag="35" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="4" Grid.Row="0" Tag="36" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="1" Tag="37" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="2" Tag="38" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="3" Tag="39" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="4" Tag="40" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="5" Tag="41" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="6" Tag="42" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="7" Tag="43" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="4" Grid.Row="8" Tag="44" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="5" Grid.Row="0" Tag="45" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="1" Tag="46" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="2" Tag="47" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="3" Tag="48" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="4" Tag="49" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="5" Tag="50" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="6" Tag="51" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="7" Tag="52" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="5" Grid.Row="8" Tag="53" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="6" Grid.Row="0" Tag="54" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="1" Tag="55" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="2" Tag="56" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="3" Tag="57" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="4" Tag="58" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="5" Tag="59" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="6" Tag="60" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="7" Tag="61" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="6" Grid.Row="8" Tag="62" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="7" Grid.Row="0" Tag="63" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="1" Tag="64" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="2" Tag="65" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="3" Tag="66" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="4" Tag="67" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="5" Tag="68" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="6" Tag="69" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="7" Tag="70" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="7" Grid.Row="8" Tag="71" MouseDown="Border_MouseDown"/>
+
+            <Border Grid.Column="8" Grid.Row="0" Tag="72" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="1" Tag="73" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="2" Tag="74" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="3" Tag="75" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="4" Tag="76" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="5" Tag="77" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="6" Tag="78" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="7" Tag="79" MouseDown="Border_MouseDown"/>
+            <Border Grid.Column="8" Grid.Row="8" Tag="80" MouseDown="Border_MouseDown"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="3" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5 3"/>
+                </Style>
+            </Grid.Resources>
+            
+            <TextBlock FontWeight="Bold" Grid.Row="0" Grid.ColumnSpan="3" x:Name="LocationPoint">Location (, )</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="2" x:Name="ImprovementOnSpaces1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="2" x:Name="ImprovementOnSpaces2">Improvement On Spaces</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="2" x:Name="ImprovementOnSpaces3">(- x -)</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="3" x:Name="NumberOfHoles1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="3" x:Name="NumberOfHoles2">Number of Holes</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="3" x:Name="NumberOfHoles3">(- x -)</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="4" x:Name="TraditionalHoles1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="4" x:Name="TraditionalHoles2">Traditional Hole Size Score</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="4" x:Name="TraditionalHoles3">(- x -)</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="5" x:Name="WeightedHoles1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="5" x:Name="WeightedHoles2">Weighted Hole Size Score</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="5" x:Name="WeightedHoles3">(- x -)</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="6" x:Name="WeightedBlocks1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="6" x:Name="WeightedBlocks2">Weighted Blocks Touching</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="6" x:Name="WeightedBlocks3">(- x -)</TextBlock>
+
+            <TextBlock Grid.Column="0" Grid.Row="7" x:Name="AvgPointsPerArea1">---</TextBlock>
+            <TextBlock Grid.Column="1" Grid.Row="7" x:Name="AvgPointsPerArea2">Average Points Per Area</TextBlock>
+            <TextBlock Grid.Column="2" Grid.Row="7" x:Name="AvgPointsPerArea3">(- x -)</TextBlock>
+
+            <Border Grid.Row="9" Background="Black" Height="5" Grid.ColumnSpan="3"/>
+            <TextBlock FontWeight="Bold" Grid.Row="10" x:Name="TotalScore1">---</TextBlock>
+            <TextBlock FontWeight="Bold" Grid.Row="10" Grid.Column="1"  x:Name="TotalScore2">Total Score</TextBlock>
+        </Grid>
+
+        <Border Grid.Row="1" Grid.Column="4" Background="LightGray" BorderBrush="Black" BorderThickness="2" Margin="20 0 0 0" Padding="10" Width="400">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="0 2"/>
+                    </Style>    
+                </StackPanel.Resources>
+
+                <Grid Margin="0 0 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="14" FontWeight="Bold">Comparison</TextBlock>
+                </Grid>
+                
+                <Button x:Name="AddCurrentSuggestionButton" Click="AddCurrentSuggestionButton_Click">Add Current</Button>
+                <Button x:Name="PreviousComparisonButton" Click="PreviousComparisonButton_Click">Previous Comparison</Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="Location"/>
+                    <TextBlock Grid.Column="1" Text="Score"/>
+                    <TextBlock Grid.Column="2" Text="Spaces+"/>
+                    <TextBlock Grid.Column="3" Text="Holes"/>
+                    <TextBlock Grid.Column="4" Text=""/>
+                    <TextBlock Grid.Column="5"/>
+                    <TextBlock Grid.Column="6"/>
+                    <TextBlock Grid.Column="7"/>
+
+                </Grid>
+
+                <ListBox Grid.Row="1" Height="120" x:Name="ComparisonList"  SelectionChanged="ComparisonList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Location}"/>
+                                <TextBlock Grid.Column="1" Text="{Binding score}"/>
+                                <TextBlock Grid.Column="2" Text="{Binding Spaces Improvement}"/>
+                                <TextBlock Grid.Column="3" Text="{Binding Holes}"/>
+                                <TextBlock Grid.Column="4" Text="{Binding score}"/>
+                                <TextBlock Grid.Column="5" Text="{Binding score}"/>
+                                <TextBlock Grid.Column="6" Text="{Binding score}"/>
+                                <TextBlock Grid.Column="7" Text="{Binding score}"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                
+                <Button x:Name="NextComparisonButton" Click="NextComparisonButton_Click">Next Comparison</Button>
+                <Button x:Name="RemoveSelectedButton" Click="RemoveSelectedButton_Click">Remove</Button>
+                <Button x:Name="ClearAllButton" Click="ClearAllButton_Click">Clear</Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
